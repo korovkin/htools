@@ -3,20 +3,18 @@
 import json
 from posixpath import split
 import sys
-import re
 import optparse
 
-def recursive_set(root, k, v):
-  comps = k.split(".")
+def recursive_set(options, root, k, v):
+  comps = k.split(options.sep)
   comp = comps[0]
   if len(comps) == 1:
     root[comp] = v
   else:
     d = root.get(comp, {})
-    recursive_set(d, ".".join(comps[1:]), v)
+    recursive_set(options, d, ".".join(comps[1:]), v)
     root[comp] = d
 
-# TODO:: add a --sep flag to control the "."
 # TODO:: add a way to specify the type of a value (int/bool)
 # TODO:: add a way to add a timestamp in s and ms
 
@@ -30,6 +28,10 @@ def main():
                     help="print version number",
                     dest="version",
                     default=False)
+  parser.add_option("", "--sep",
+                    help="key separator to use",
+                    dest="sep",
+                    default=".")
   (options, vars) = parser.parse_args()
 
   if options.version:
@@ -41,10 +43,9 @@ def main():
 
   # parse the (k=v)'s and recursively:
   for kv in vars:
-
     k = kv.split("=")[0]
     v = kv.split("=")[1]
-    recursive_set(root, k, v)
+    recursive_set(options, root, k, v)
 
   # print the output
   print(json.dumps(root, sort_keys=True))

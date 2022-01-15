@@ -16,6 +16,10 @@ def recursive_set(root, k, v):
     recursive_set(d, ".".join(comps[1:]), v)
     root[comp] = d
 
+# TODO:: add a --sep flag to control the "."
+# TODO:: add a way to specify the type of a value (int/bool)
+# TODO:: add a way to add a timestamp in s and ms
+
 def main():
   desc = """
   Process the stdin line by line. apply the following operators on each line.

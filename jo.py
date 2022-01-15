@@ -22,7 +22,7 @@ def recursive_set(root, k, v):
 
 def main():
   desc = """
-  Process the stdin line by line. apply the following operators on each line.
+  Construct and output a JSON object from k=v pairs
   """
   parser = optparse.OptionParser(description = desc)
   parser.add_option("", "--version",
@@ -36,12 +36,17 @@ def main():
     print("0.2")
     sys.exit(0)
 
+  # root object to be built:
   root = {}
+
+  # parse the (k=v)'s and recursively:
   for kv in vars:
+
     k = kv.split("=")[0]
     v = kv.split("=")[1]
     recursive_set(root, k, v)
 
+  # print the output
   print(json.dumps(root, sort_keys=True))
 if __name__ == "__main__":
   main()

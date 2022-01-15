@@ -20,7 +20,7 @@ def recursive_set(options, root, k, v):
 
 def main():
   desc = """
-  Construct and output a JSON object from k=v pairs
+  Construct and output a nested JSON object from k=v pairs
   """
   parser = optparse.OptionParser(description = desc)
   parser.add_option("", "--version",

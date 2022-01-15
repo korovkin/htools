@@ -32,9 +32,13 @@ prefix: A: postfix
 prefix: B: postfix
 prefix: C: postfix
 
- # cat lines.txt | ./line.py --Splice "A|B"
+cat lines.txt | ./line.py --Splice "A|B"
 A
 B
+
+echo "x,y=100,x=100" | python line.py --Splice "y=\d+"
+y=100
+
 
 ``
 

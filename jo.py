@@ -30,11 +30,6 @@ def main():
                     help="print version number",
                     dest="version",
                     default=False)
-  parser.add_option("", "--Splice",
-                    type=str,
-                    help="Output the given RE",
-                    dest="splice",
-                    default=None)
   (options, vars) = parser.parse_args()
 
   if options.version:

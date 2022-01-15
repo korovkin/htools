@@ -1,6 +1,5 @@
 # line.py
 
-
 Usage:
 ```
 Usage: line.py [options]
@@ -42,6 +41,19 @@ B
 echo "x,y=100,x=100" | python line.py --Splice "y=\d+"
 y=100
 
+```
+
+# jo.py
+
+```
+python jo.py --help
+Usage: jo.py [options]
+
+   Construct and output a JSON object from k=v pairs
+
+Options:
+  -h, --help  show this help message and exit
+  --version   print version number
 
 # build a nested JSON object from the command line:
 python jo.py x=1 y=2  z.a=1 z.b=2 z.x=x | jq '.'
